@@ -21,4 +21,15 @@ $ source /usr/local/bin/virtualenvwrapper.sh (Esta línea la ponemos al final de
 $ mkvirtualenv nombreEntorno (Para crear el entorno)
 $ deactivate (Para salir del entorno)
 $ workon (Para ver los entornos creados)
-$ workon nombreEntorno (Para entrar al entorno)```
+$ workon nombreEntorno (Para entrar al entorno)
+```
+
+## PASO 3: Instalar los paquetes necesarios y requirements.txt
+
+Creamos en el repositorio un archivo "requirements.txt" que contenga esto "Django~=4.2.7" (Ultima versión).
+Escribir estos 2 comandos correspondientes dentro de nuestro entorno virtual:
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
