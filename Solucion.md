@@ -1,6 +1,6 @@
-#PASOS A SEGUIR
+# PASOS A SEGUIR
 
-##PASO 1: Creación y vinculo del Repositorio en GitHUb
+## PASO 1: Creación y vinculo del Repositorio en GitHUb
 
 Primero crearemos un repositorio en GitHub con nuestro nombre, un README.md por defecto, lenguaje Python y lo último None.
 Creamos una carpeta en local para guardar ese repositorio.
