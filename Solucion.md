@@ -33,3 +33,10 @@ Escribir estos 2 comandos correspondientes dentro de nuestro entorno virtual:
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
+## PASO 4: Crear el proyecto de Django
+
+Crear el proyecto en tu carpeta desde el entorno virtual con este comando:
+
+```bash
+django-admin startproject mysite .
+```
