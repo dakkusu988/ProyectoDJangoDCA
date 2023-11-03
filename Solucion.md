@@ -11,7 +11,7 @@ Y así tendriamos ya nuestro proyecto listo para hacer commits de nuestros cambi
 
 Entrar a la página de VirtualEnvwrapper "https://virtualenvwrapper.readthedocs.io/en/latest/" y seguir los pasos para instalarlo:
 
-"bash
+```bash
 $ pip install virtualenvwrapper (Para instalarlo)
 $ export WORKON_HOME=~/Envs 
 $ mkdir -p $WORKON_HOME
@@ -21,4 +21,4 @@ $ source /usr/local/bin/virtualenvwrapper.sh (Esta línea la ponemos al final de
 $ mkvirtualenv nombreEntorno (Para crear el entorno)
 $ deactivate (Para salir del entorno)
 $ workon (Para ver los entornos creados)
-$ workon nombreEntorno (Para entrar al entorno)"
+$ workon nombreEntorno (Para entrar al entorno)```
