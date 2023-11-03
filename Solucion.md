@@ -30,6 +30,6 @@ Creamos en el repositorio un archivo "requirements.txt" que contenga esto "Djang
 Escribir estos 2 comandos correspondientes dentro de nuestro entorno virtual:
 
 ```bash
-python -m pip install --upgrade pip
+    python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
