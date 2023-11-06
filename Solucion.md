@@ -179,3 +179,37 @@ Superuser created successfully.
 ```
 
 Ahora ya podrás iniciar sesión al escribir tu usuario.
+
+## Paso 8: Modificar urls.py y creación de otro urls.py en Blog
+
+Modificar el archivo urls.py para que quede así:
+
+```python
+"""mysite URL Configuration
+
+[...]
+"""
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('blog.urls')),
+]
+```
+
+Creamos otro urls.py en blog y que quede tal que así:
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.post_list, name='post_list'),
+]
+```
+
+Después de hacer todo esto, no funcionara ni la pagina de admin, ni la de Django, ya que el servidor ha dejado de funcionar.
+Luego lo arreglaremos.
+
+## Paso 9:
