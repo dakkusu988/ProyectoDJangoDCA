@@ -9,8 +9,9 @@ Y así tendriamos ya nuestro proyecto listo para hacer commits de nuestros cambi
 
 ## PASO 2: Instalar VirtualEnvwrapper y crear nuestro Entorno Virtual
 
-Entrar a la página de VirtualEnvwrapper "https://virtualenvwrapper.readthedocs.io/en/latest/" y seguir los pasos para instalarlo:
+Para Linux entrar a "https://virtualenvwrapper.readthedocs.io/en/latest/" y seguir los pasos para instalarlo:
 
+### Linux
 ```bash
 $ pip install virtualenvwrapper (Para instalarlo)
 $ export WORKON_HOME=~/Envs 
@@ -22,6 +23,22 @@ $ mkvirtualenv nombreEntorno (Para crear el entorno)
 $ deactivate (Para salir del entorno)
 $ workon (Para ver los entornos creados)
 $ workon nombreEntorno (Para entrar al entorno)
+```
+
+Para Windows entrar a https://pypi.org/project/virtualenvwrapper-win/ y seguir los pasos para instalarlo:
+
+### Windows
+```bash
+# using pip
+pip install virtualenvwrapper-win
+
+# using easy_install
+easy_install virtualenvwrapper-win
+
+# from source
+git clone git://github.com/davidmarble/virtualenvwrapper-win.git
+cd virtualenvwrapper-win
+python setup.py install   # or pip install .
 ```
 
 ## PASO 3: Instalar los paquetes necesarios y requirements.txt
@@ -39,4 +56,41 @@ Crear el proyecto en tu carpeta desde el entorno virtual con este comando:
 
 ```bash
 django-admin startproject mysite .
+```
+## PASO 5: Cambios en settings.py, migrate y arrancar el servidor
+
+Modificamos el archivo settings.py reemplazando cada línea por la correspondiente:
+
+```python
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+LANGUAGE_CODE = 'es-es'
+TIME_ZONE = 'Europe/Berlin'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+```
+
+Luego ejecutamos este comando en nuestro proyecto de Django:
+
+```bash
+python manage.py migrate
+```
+Ya por último escribimos el comando dentro del entorno para arrancar el servidor:
+
+```bash
+python manage.py runserver
+```
+
+Una vez arrancado vemos la dirección correspondiente para saber si todo funciono correctamente:
+
+```bash
+http://127.0.0.1:8000/
 ```
