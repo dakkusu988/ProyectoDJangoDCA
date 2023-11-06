@@ -274,4 +274,4 @@ Ahora completamos el archivo task_list.html con este contenido:
 ```
 Se deberían notar los cambios hechos en la pagina.
 
-## Paso 11:
+## Paso 11: Coming soon...
