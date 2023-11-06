@@ -149,4 +149,33 @@ python manage.py makemigrations blog
 python manage.py migrate blog
 ```
 
-## PASO 7:
+## PASO 7: Modificación admin.py y creación superusuario Admin
+
+Reemplazar el contenido de admin.py con esto:
+
+```python
+from django.contrib import admin
+from .models import Post
+
+admin.site.register(Post)
+```
+
+Si tienes el servidor arrancado deberías ver una pestaña de inicio aquí:
+
+```text
+http://127.0.0.1:8000/admin/
+```
+
+Creamos un superusuario para poder iniciar sesión y administrar nuestro sitio:
+
+```bash
+python manage.py createsuperuser
+
+Username: ola
+Email address: ola@example.com
+Password:
+Password (again):
+Superuser created successfully.
+```
+
+Ahora ya podrás iniciar sesión al escribir tu usuario.
