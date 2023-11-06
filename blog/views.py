@@ -1,6 +1,6 @@
 from django.shortcuts import render
-
-# Create your views here.
+from .models import Task
 
 def task_list(request):
-    return render(request, 'blog/task_list.html', {})
+    tasks = Task.objects.all()
+    return render(request, 'tasks/task_list.html', {'tasks': Task})
