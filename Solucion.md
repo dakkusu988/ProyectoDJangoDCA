@@ -212,4 +212,20 @@ urlpatterns = [
 Después de hacer todo esto, no funcionara ni la pagina de admin, ni la de Django, ya que el servidor ha dejado de funcionar.
 Luego lo arreglaremos.
 
-## Paso 9:
+## Paso 9: Modificación archivo views.py de Blog
+
+Modificar el archivo views.py de Blog para que quede así:
+
+```python
+from django.shortcuts import render
+
+# Create your views here.
+
+def post_list(request):
+    return render(request, 'blog/post_list.html', {})
+```
+
+Debería salir un TemplateError.
+
+## Paso 10:
+
