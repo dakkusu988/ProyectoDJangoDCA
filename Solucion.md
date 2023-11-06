@@ -227,7 +227,7 @@ def post_list(request):
 
 Debería salir un TemplateError.
 
-## Paso 10: Creación de directorios y archivo templates/blog/post_list.html en Blog, reinicio de servidor y modificación de post_list.html
+## Paso 10: Creación de directorios y archivo templates/blog/task_list.html en Blog, reinicio de servidor y modificación de task_list.html
 
 Crea un directorio dentro de Blog para que quede tal que así:
 
