@@ -91,6 +91,60 @@ python manage.py runserver
 
 Una vez arrancado vemos la dirección correspondiente para saber si todo funciono correctamente:
 
-```bash
+```text
 http://127.0.0.1:8000/
+```
+
+## PASO 6
+
+Para crear nuestro blog en nuestro proyecto escribir este comando:
+
+```bash
+python manage.py startapp blog
+```
+
+Modificamos el archivo settings.py de esta manera:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog.apps.BlogConfig',
+]
+```
+
+Borrar todo lo que hay en blog/models.py y poner esto:
+
+```python
+from django.conf import settings
+from django.db import models
+from django.utils import timezone
+
+
+class Post(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(
+            default=timezone.now)
+    published_date = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
+```
+
+Escribir en la línea de comandos estos 2 comandos:
+
+```bash
+python manage.py makemigrations blog
+
 ```
