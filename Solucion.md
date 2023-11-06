@@ -227,5 +227,51 @@ def post_list(request):
 
 Debería salir un TemplateError.
 
-## Paso 10:
+## Paso 10: Creación de directorios y archivo templates/blog/post_list.html en Blog, reinicio de servidor y modificación de post_list.html
 
+Crea un directorio dentro de Blog para que quede tal que así:
+
+```text
+blog
+└───templates
+    └───blog
+```
+
+Ahora crea un archivo post_list.html dentro de esa ruta que has creado y mira la página:
+
+```text
+http://127.0.0.1:8000/
+```
+
+Si te sigue dando error reinicia el servidor con "Ctrl+C" y "python manage.py runserver".
+Se debería ver una pantalla en Blanco.
+
+Ahora completamos el archivo post_list.html con este contenido:
+
+```python
+<html>
+    <head>
+        <title>Django Girls blog</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">Django Girls Blog</a></h1>
+        </div>
+
+        <div>
+            <p>published: 14.06.2014, 12:14</p>
+            <h2><a href="">My first post</a></h2>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        </div>
+
+        <div>
+            <p>published: 14.06.2014, 12:14</p>
+            <h2><a href="">My second post</a></h2>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
+        </div>
+    </body>
+</html>
+```
+Se deberían notar los cambios.
+
+## Paso 11:
