@@ -95,7 +95,7 @@ Una vez arrancado vemos la dirección correspondiente para saber si todo funcion
 http://127.0.0.1:8000/
 ```
 
-## PASO 6
+## PASO 6: Modificación en settings.py, models.py, makemigrations y migrate
 
 Para crear nuestro blog en nuestro proyecto escribir este comando:
 
@@ -142,9 +142,11 @@ class Post(models.Model):
         return self.title
 ```
 
-Escribir en la línea de comandos estos 2 comandos:
+Escribir en la línea de comandos estos 2 comandos y debería darnos un OK:
 
 ```bash
 python manage.py makemigrations blog
-
+python manage.py migrate blog
 ```
+
+## PASO 7:
