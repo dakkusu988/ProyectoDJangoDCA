@@ -237,7 +237,7 @@ blog
     └───blog
 ```
 
-Ahora crea un archivo post_list.html dentro de esa ruta que has creado y mira la página:
+Ahora crea un archivo task_list.html dentro de esa ruta que has creado y mira la página:
 
 ```text
 http://127.0.0.1:8000/
@@ -246,7 +246,7 @@ http://127.0.0.1:8000/
 Si te sigue dando error reinicia el servidor con "Ctrl+C" y "python manage.py runserver".
 Se debería ver una pantalla en Blanco.
 
-Ahora completamos el archivo post_list.html con este contenido:
+Ahora completamos el archivo task_list.html con este contenido:
 
 ```python
 <html>
@@ -272,6 +272,6 @@ Ahora completamos el archivo post_list.html con este contenido:
     </body>
 </html>
 ```
-Se deberían notar los cambios.
+Se deberían notar los cambios hechos en la pagina.
 
 ## Paso 11:
