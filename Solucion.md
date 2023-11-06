@@ -205,7 +205,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.post_list, name='task_list'),
+    path('', views.task_list, name='task_list'),
 ]
 ```
 
@@ -221,7 +221,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def post_list(request):
+def task_list(request):
     return render(request, 'blog/task_list.html', {})
 ```
 
