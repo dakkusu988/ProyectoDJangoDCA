@@ -117,7 +117,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Borrar todo lo que hay en blog/models.py y poner esto:
+Borrar todo lo que hay en task/models.py y poner esto:
 
 ```python
 from django.db import models
