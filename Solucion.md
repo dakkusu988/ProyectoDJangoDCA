@@ -95,12 +95,12 @@ Una vez arrancado vemos la dirección correspondiente para saber si todo funcion
 http://127.0.0.1:8000/
 ```
 
-## PASO 6: Modificación en settings.py, models.py, makemigrations y migrate
+## PASO 6: Creación de Task, modificación en settings.py, models.py, makemigrations y migrate
 
-Para crear nuestro blog en nuestro proyecto escribir este comando:
+Para crear nuestro task en nuestro proyecto escribir este comando:
 
 ```bash
-python manage.py startapp blog
+python manage.py startapp task
 ```
 
 Modificamos el archivo settings.py de esta manera:
@@ -113,30 +113,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
+    'task',
 ]
 ```
 
 Borrar todo lo que hay en blog/models.py y poner esto:
 
 ```python
-from django.conf import settings
 from django.db import models
-from django.utils import timezone
 
-
-class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+class Task(models.Model):
     title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+    description = models.TextField()
+    completed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
@@ -145,8 +134,8 @@ class Post(models.Model):
 Escribir en la línea de comandos estos 2 comandos y debería darnos un OK:
 
 ```bash
-python manage.py makemigrations blog
-python manage.py migrate blog
+python manage.py makemigrations task
+python manage.py migrate task
 ```
 
 ## PASO 7: Modificación admin.py y creación superusuario Admin
@@ -155,9 +144,9 @@ Reemplazar el contenido de admin.py con esto:
 
 ```python
 from django.contrib import admin
-from .models import Post
+from .models import Task
 
-admin.site.register(Post)
+admin.site.register(Task)
 ```
 
 Si tienes el servidor arrancado deberías ver una pestaña de inicio aquí:
@@ -180,61 +169,61 @@ Superuser created successfully.
 
 Ahora ya podrás iniciar sesión al escribir tu usuario.
 
-## Paso 8: Modificar urls.py y creación de otro urls.py en Blog
+## Paso 8: Modificar urls.py y creación de otro urls.py en Task
 
 Modificar el archivo urls.py para que quede así:
 
 ```python
-"""mysite URL Configuration
+# Archivo urls.py de mysite
 
-[...]
-"""
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
+  path('admin/', admin.site.urls),
+  path('', include('task.urls')),
 ]
 ```
 
-Creamos otro urls.py en blog y que quede tal que así:
+Creamos otro urls.py en task y que quede tal que así:
 
 ```python
+# Archivo urls.py de task
+
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.task_list, name='task_list'),
+  path('', views.task_list, name='task_list'),
 ]
 ```
 
 Después de hacer todo esto, no funcionara ni la pagina de admin, ni la de Django, ya que el servidor ha dejado de funcionar.
 Luego lo arreglaremos.
 
-## Paso 9: Modificación archivo views.py de Blog
+## Paso 9: Modificación archivo views.py de Task
 
-Modificar el archivo views.py de Blog para que quede así:
+Modificar el archivo views.py de task para que quede así:
 
 ```python
 from django.shortcuts import render
-
-# Create your views here.
+from .models import Task
 
 def task_list(request):
-    return render(request, 'blog/task_list.html', {})
+  tasks = Task.objects.all()
+  return render(request, 'tasks/task_list.html', {'tasks': task})
 ```
 
 Debería salir un TemplateError.
 
-## Paso 10: Creación de directorios y archivo templates/blog/task_list.html en Blog, reinicio de servidor y modificación de task_list.html
+## Paso 10: Creación de directorios y archivo templates/task/task_list.html en Task, reinicio de servidor y modificación de task_list.html
 
-Crea un directorio dentro de Blog para que quede tal que así:
+Crea un directorio dentro de Task para que quede tal que así:
 
 ```text
-blog
+task
 └───templates
-    └───blog
+    └───task
 ```
 
 Ahora crea un archivo task_list.html dentro de esa ruta que has creado y mira la página:
