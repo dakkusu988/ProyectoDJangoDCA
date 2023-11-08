@@ -7,6 +7,15 @@
 
         <h1>Lista de Tareas</h1>
         
+        <form action="{% url 'task_list' %}"  method="POST">
+
+            {% csrf token %}
+            {{ form.as_p }}
+
+            <button></button>
+
+        </form>
+
         <ul>
             {% for task in tasks %}
             <li>
