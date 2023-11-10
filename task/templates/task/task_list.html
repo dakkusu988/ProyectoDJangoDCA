@@ -5,16 +5,18 @@
 
     <body>
 
-        <h1>Lista de Tareas</h1>
+        <h1>Nueva tarea</h1>
         
         <form action="{% url 'task_list' %}"  method="POST">
 
             {% csrf token %}
             {{ form.as_p }}
 
-            <button></button>
+            <button type="submit">Nueva tarea</button>
 
         </form>
+
+        <h1>Lista de tareas</h1>
 
         <ul>
             {% for task in tasks %}
@@ -24,9 +26,10 @@
             </li>
             
             {% empty %}
-                <p>No hay tareas disponibles.</p>
+                <p>No hay tareas por hacer.</p>
             {% endfor %}
         </ul>
 
     </body>
+    
 </html>
