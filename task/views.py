@@ -21,7 +21,7 @@ def task_list(request):
   return render(request, 'task/task_list.html', {'tasks':tasks, 'form':form})
 """
 
-class MyFormView_TaskList(View):
+class TaskView(View):
 
   tasks = Task.objects.all()
 
