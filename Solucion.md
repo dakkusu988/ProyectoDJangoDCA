@@ -239,23 +239,40 @@ Ahora completamos el archivo task_list.html con este contenido:
 
 ```python
 <html>
-        <head>
-            <title>Task List</title>
-        </head>
-        <body>
-            <h1>Lista de Tareas</h1>
-            <ul>
-                {% for task in tasks %}
-                <li>
-                    <h2>{{ task.title }}</h2>
-                    <p>{{ task.description }} - {% if task.completed %} Sí {% else %} No {% endif %}</p>
-                </li>
-                {% empty %}
-                <p>No hay tareas disponibles.</p>
-                {% endfor %}
-            </ul>
-        </body>
-    </html>
+    <head>
+        <title>Task List</title>
+    </head>
+
+    <body>
+
+        <h1>Nueva tarea</h1>
+        
+        <form action="{% url 'task_list' %}"  method="POST">
+
+            {% csrf token %}
+            {{ form.as_p }}
+
+            <button type="submit">Nueva tarea</button>
+
+        </form>
+
+        <h1>Lista de tareas</h1>
+
+        <ul>
+            {% for task in tasks %}
+            <li>
+                <h2>{{ task.title }}</h2>
+                <p>{{ task.description }} - {% if task.completed %} Sí {% else %} No {% endif %}</p>
+            </li>
+            
+            {% empty %}
+                <p>No hay tareas por hacer.</p>
+            {% endfor %}
+        </ul>
+
+    </body>
+    
+</html>
 ```
 Se deberían notar los cambios hechos en la pagina.
 
