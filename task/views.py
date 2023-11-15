@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from .forms import TaskForm
 from django.views import View
@@ -48,3 +48,9 @@ class TaskView(View):
       return redirect('task_list')
   
     return render(request, 'task/task_list.html', {'tasks':self.actualizaTask(), 'form':form})
+  
+class TaskDetailView(View):
+
+  def get(self, request, pk):
+    task= get_object_or_404(Task, pk=pk)
+    return render(request, 'task/task_detail.html', {'tasks':task})
