@@ -4,14 +4,16 @@
     </head>
 
     <body>
-        
-            {% for task in tasks %}
 
+        <h1>Lista de tareas</h1>
+        
+        {% for task in tasks %}
+
+            <h3>
                 <a href="{% url 'task_detail' pk=task.pk %}">{{ task.pk }} - {{ task.title }}</a>
-                
-                <br>
+            </h3>
           
-            {% endfor %}
+        {% endfor %}
 
     </body>
     
