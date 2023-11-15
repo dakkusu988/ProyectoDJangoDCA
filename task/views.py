@@ -21,7 +21,7 @@ def task_list(request):
   return render(request, 'task/task_list.html', {'tasks':tasks, 'form':form})
 """
 
-class Task(View):
+class TaskView(View):
 
   tasks = Task.objects.all()
 
@@ -37,7 +37,14 @@ class Task(View):
     form = TaskForm(request.POST)
 
     if form.is_valid():
-      form.save()
+
+      titulo = form.cleaned_data['title']
+      description = form.cleaned_data['description']
+      completed = form.cleaned_data['completed']
+
+      Task.objects.create(title=titulo, description=description, completed=completed)
+
+      #form.save()
       return redirect('task_list')
   
     return render(request, 'task/task_list.html', {'tasks':self.actualizaTask(), 'form':form})
